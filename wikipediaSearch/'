@@ -1,0 +1,22 @@
+import {...} from '...'
+
+@Component({
+  selector: 'my-app',
+  template: `
+  <div>
+    <h2>A Wikipedia Search</h2>
+    <input type="text" formControl[term] >
+    <ul>
+      <li *ngFor='let item in items'>{{item}}</li>
+    </ul>
+  </div>
+  `
+})
+
+import class AppComponent {
+  items: Array<string>
+  constructor(private wikipediaService: WikipediaService) {}
+  search(term) {
+    this.wikipediaService.search(term).then(items => this.items = items)
+  }
+}
